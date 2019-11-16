@@ -8,6 +8,7 @@ clock = pygame.time.Clock()
 state =0
 neighbor = 0
 window = pygame.display.set_mode((800,500))
+pygame.display.set_caption("Game of Life!")
 window.fill((255,255,255))
 windowopen = True
 for i in range(9):
@@ -26,7 +27,6 @@ def countneighbor(grid,x,y):
             summ+=grid[col][row]
     
     summ-=grid[x][y]
-    #print(summ)
     return summ
 new_population = population
 
@@ -55,30 +55,12 @@ while windowopen:
             else:
                 new_population[i][j]=state
 
-
-    #print(new_population)
     population=new_population
 
         
     window.fill((255,255,255))            
-   # print(population)
     for events in pygame.event.get():
         if events.type == pygame.QUIT:
             windowopen = False
     
     pygame.display.update()
-
-
-
-
-#redundent code
- #  sumof=population[(i-1+9)%9][j]+population[i][(j-1+15)%15]+population[(i-1+9)%9][(j-1+15)%15]+population[(i+1+9)%9][j]+population[i][(j+1+15)%15]+population[(i+1+9)%9][j+1]+population[(i-1+9)%9][(j+1+15)%15]+population[(i+1+9)%9][(j-1+15)%15]
-           
-          # print(sumof) # for k in range(-1,2):
-            #     for l in range(-1,2):                    
-            #         sumof+=population[(i+k+9)%9][(j+l)%15]
-            #         print(sumof)
-            #     if sumof <2 or sumof>3 and population[i][j]==1:
-            #         population[i][j]=0
-            #     elif sumof==3 and population[i][j]==0:
-            #         population[i][j]==1
